@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Interest Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        #interest {
+            font-weight: bold;
+            color: #0078d4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Live Interest Calculator</h1>
+        <p>Interest Value: <span id="interest">Calculating...</span></p>
+    </div>
+
+    <script>
+        function calculateInterest() {
+            // Get the current time
+            const now = new Date();
+
+            // Define the target date (12/12/2024 at 12:00 AM)
+            const targetDate = new Date("2024-12-12T00:00:00");
+
+            // Calculate the difference in milliseconds
+            const diffInMillis = now - targetDate;
+
+            // Convert milliseconds to days
+            const daysSince = diffInMillis / (1000 * 60 * 60 * 24);
+            
+            // Calculate the interest using the equation 10e^(10 * (d / 7))
+            const interest = 10 * Math.exp(0.1 * (daysSince / 7));
+
+            // Display the interest value
+            document.getElementById('interest').textContent = interest.toFixed(2);
+        }
+
+        // Update the interest value every second
+        setInterval(calculateInterest, 1000);
+
+        // Initial calculation
+        calculateInterest();
+    </script>
+</body>
+</html>
