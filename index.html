@@ -38,6 +38,7 @@
     <div class="container">
         <h1>Live Interest Calculator</h1>
         <p>Interest Value: <span id="interest">Calculating...</span></p>
+        <p>Unrounded: <span id="nor">Calculating...</span></p>
     </div>
 
     <script>
@@ -59,6 +60,7 @@
 
             // Display the interest value
             document.getElementById('interest').textContent = interest.toFixed(2);
+            document.getElementById('nor').textContent = interest;
         }
 
         // Update the interest value every second
