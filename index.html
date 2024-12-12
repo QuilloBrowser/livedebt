@@ -32,13 +32,18 @@
             font-weight: bold;
             color: #0078d4;
         }
+        #nor {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #0078d4;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Live Interest Calculator</h1>
         <p>Interest Value: <span id="interest">Calculating...</span></p>
-        <p>Unrounded: <span id="nor">Calculating...</span></p>
+        <span id="nor">Calculating...</span>
     </div>
 
     <script>
@@ -59,12 +64,12 @@
             const interest = 10 * Math.exp(0.1 * (daysSince / 7));
 
             // Display the interest value
-            document.getElementById('interest').textContent = interest.toFixed(2);
-            document.getElementById('nor').textContent = interest;
+            document.getElementById('interest').textContent = "$"+interest.toFixed(2).toString();
+            document.getElementById('nor').textContent = "("+interest.toString()+")";
         }
 
         // Update the interest value every second
-        setInterval(calculateInterest, 1000);
+        setInterval(calculateInterest, 10);
 
         // Initial calculation
         calculateInterest();
